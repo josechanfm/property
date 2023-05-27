@@ -23,7 +23,19 @@ Route::group(['middleware' => config('fortify.middleware', ['admin_web'])], func
     ->name('manage.logout');
 });
 
-
+Route::middleware([
+    'auth:admin_web',
+    config('jetstream.auth_session'),
+    'role:community',
+])->group(function(){
+    Route::prefix('/admin')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin');
+        Route::resource('/communities',App\Http\Controllers\Admin\CommunityController::class)->names('admin.communities');
+        Route::get('/community/{community}/buildings',[App\Http\Controllers\Admin\CommunityController::class,'buildings'])->name('admin.community.buildings');
+        Route::resource('/building',App\Http\Controllers\Admin\BuildingController::class)->names('admin.building');
+        Route::get('/building/{building}/properties',[App\Http\Controllers\Admin\BuildingController::class,'properties'])->name('admin.building.properties');
+    })->name('admin');
+});
 
 Route::middleware([
     'auth:admin_web',
@@ -41,3 +53,4 @@ Route::middleware([
         Route::resource('mailers',App\Http\Controllers\MailerController::class)->names('manage.mailers');
     })->name('manage');
 });
+

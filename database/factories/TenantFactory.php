@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
-class MemberFactory extends Factory
+class TenantFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -24,9 +24,9 @@ class MemberFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->randomElement(['']),
-            'last_name' => $this->faker->lastName(),
-            'display_name' => $this->faker->name,
+            'tenant_type' => $this->faker->randomElement(['owner','household','renter','agent']),
+            'name' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail(),
         ];
     }

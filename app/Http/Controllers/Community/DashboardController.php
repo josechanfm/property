@@ -19,7 +19,7 @@ class DashboardController extends Controller
     {
         //$this->authorize('view',$Community);
         return Inertia::render('Community/Dashboard',[
-            'communities' => auth()->user()->Communities
+            'communities' => auth()->user()->communities
         ]);
 
     }

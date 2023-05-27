@@ -9,11 +9,12 @@ class Community extends Model
 {
     use HasFactory;
 
+    
     public function adminUsers(){
         return $this->belongsToMany(AdminUser::class);
     }
-    public function inquiries(){
-        return $this->hasMany(Inquiry::class)->where('parent_id',0)->with('children')->with('emails')->orderBy('created_at','desc')->orderBy('id', 'desc');
+    public function buildings(){
+        return $this->hasMany(Building::class);
     }
     public function members(){
         return $this->belongsToMany(Member::class);

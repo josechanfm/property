@@ -7,7 +7,7 @@
         </template>
         <button @click="createRecord()"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create Subject template</button>
-            <a-table :dataSource="communities" :columns="columns">
+            <a-table :dataSource="properties" :columns="columns">
                 <template #bodyCell="{column, text, record, index}">
                     <template v-if="column.dataIndex=='operation'">
                         <a-button @click="editRecord(record)">Edit</a-button>
@@ -34,21 +34,20 @@
             :rules="rules"
             :validate-messages="validateMessages"
         >
-            <a-input type="hidden" v-model:value="modal.data.id"/>
-            <a-form-item label="姓名(中文)" name="name_zh">
-                <a-input v-model:value="modal.data.name_zh" />
+            <a-form-item label="姓名(中文)" name="name">
+                <a-input v-model:value="modal.data.name" />
             </a-form-item>
-            <a-form-item label="姓名(外文)" name="name_zh">
-                <a-input v-model:value="modal.data.name_fn" />
+            <a-form-item label="姓名(外文)" name="address">
+                <a-input v-model:value="modal.data.address" />
             </a-form-item>
-            <a-form-item label="別名" name="nickname">
-                <a-input v-model:value="modal.data.nickname" />
+            <a-form-item label="別名" name="block">
+                <a-input v-model:value="modal.data.block" />
             </a-form-item>
-            <a-form-item label="手機" name="mobile">
-                <a-input v-model:value="modal.data.mobile" />
+            <a-form-item label="手機" name="floors">
+                <a-input v-model:value="modal.data.floors" />
             </a-form-item>
-            <a-form-item label="狀態" name="status">
-                <a-select v-model:value="modal.data.state" :options="employmentStates"/>
+            <a-form-item label="狀態" name="units">
+                <a-select v-model:value="modal.data.units"/>
             </a-form-item>
         </a-form>
         <template #footer>
@@ -60,7 +59,7 @@
     </AdminLayout>
 
 </template>
-
+ gd
 <script>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import { defineComponent, reactive } from 'vue';
@@ -69,7 +68,7 @@ export default {
     components: {
         AdminLayout,
     },
-    props: ['communities'],
+    props: ['properties'],
     data() {
         return {
             modal:{
@@ -81,17 +80,11 @@ export default {
             teacherStateLabels:{},
             columns:[
                 {
-                    title: '姓名(中文)',
-                    dataIndex: 'abbr',
+                    title: '樓層',
+                    dataIndex: 'floor',
                 },{
-                    title: '姓名(外文)',
-                    dataIndex: 'full_name',
-                },{
-                    title: '別名',
-                    dataIndex: 'phone',
-                },{
-                    title: '手機',
-                    dataIndex: 'country',
+                    title: '單位',
+                    dataIndex: 'unit',
                 },{
                     title: '操作',
                     dataIndex: 'operation',

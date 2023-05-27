@@ -3,7 +3,7 @@
     <div class="m-4">
         <a-page-header 
             style="text-transform: capitalize;" 
-            :breadcrumb="{ routes }">
+            >
             <template #title>
                 <div >
                     <slot name="header" />

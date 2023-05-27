@@ -2,7 +2,14 @@
     <a-layout style="min-height: 100vh">
 
         <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible theme="light" width="250px" class="shadow-md " >
-            <AdminMenu :menuKeys='menuKeys' />
+            <div class="m-4 text-center text-lg" v-if="collapsed">
+                <inertia-link href='/community'>Org </inertia-link>
+            </div>
+            <div class="m-4 text-center text-lg" v-else>
+                <inertia-link :href="route('manage.dashboard')">Admin</inertia-link>
+            </div>
+
+            <AdminMenu :menuKeys='menuKeys' :community="community"/>
         </a-layout-sider>
         
         <a-layout>
@@ -24,7 +31,7 @@
                             </a-menu-item>
                             <a-menu-divider />
                             <a-menu-item>
-                                <a href="javascript:;">教師平臺</a>
+                                <a href="javascript:;">系統設置</a>
                             </a-menu-item>
                             <a-menu-item>
                                 <a href="javascript:;">行政管理後臺</a>
@@ -38,7 +45,6 @@
             </a-layout-header>
 
             <a-layout-content>
-
                 <PageHeader v-if="$slots.header" :menuKeys='menuKeys'>
                     <template #header>
                         <div>
@@ -62,17 +68,17 @@
 import { ref, reactive } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import PageHeader from '@/Components/Admin/PageHeader.vue';
+import AdminMenu from '@/Components/Admin/AdminMenu.vue';
 
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
 } from '@ant-design/icons-vue';
 
-import AdminMenu from '@/Components/Admin/AdminMenu.vue';
-// import AdminMenu from '@/Layouts/Menu/Menu.vue';
 
 defineProps({
     title: String,
+    community:Object,
 });
 
 const menuKeys = reactive({

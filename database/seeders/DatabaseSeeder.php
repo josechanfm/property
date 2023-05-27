@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
             FormSeeder::class,
             InquirySeeder::class,
             //EmailSeeder::class,
-            BuildingSeeder::class,
         ]);
 
 
