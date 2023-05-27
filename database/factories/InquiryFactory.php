@@ -14,10 +14,10 @@ class InquiryFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition($departmentId=0,$parentId=0)
+    public function definition($communityId=0,$parentId=0)
     {
         return [
-            'department_id'=>$departmentId,
+            'community_id'=>$communityId,
             'parent_id'=>1,
             'root_id'=>1,
             'title'=>$this->faker->text(5),
@@ -28,9 +28,9 @@ class InquiryFactory extends Factory
         ];
     }
 
-    // public function withParam($departmentId){
+    // public function withParam($CommunityId){
     //     return $this->state([
-    //         'department_id' => $departmentId,
+    //         'community_id' => $CommunityId,
     //     ]);
     // }
 }

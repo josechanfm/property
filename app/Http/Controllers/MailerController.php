@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Email;
-use App\Models\Department;
+use App\Models\Community;
 use App\Mail\InquiryMail;
 use App\Models\Inquiry;
 use App\Notifications\InquiryResponseNotification;
@@ -23,7 +23,7 @@ class MailerController extends Controller
     {
         $emails=Email::where('admin_user_id',auth()->user()->id)->with('media')->get();
         return Inertia::render('Mailer/MailList',[
-            'department'=>Department::find(1),
+            'Community'=>Community::find(1),
             'emails'=>$emails
         ]);
     }

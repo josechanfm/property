@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->id();
             $table->string('abbr_zh')->nullable();
             $table->string('abbr_en')->nullable();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('communities');
     }
 };

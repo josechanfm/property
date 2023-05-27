@@ -33,9 +33,9 @@ class MemberPolicy
         if($user->hasRole('admin')){
             return true;
         }
-        $organizations=$member->organizations;
-        foreach($organizations as $organization){
-            if(in_array($organization->id, $user->organizations->pluck('id')->toArray())){
+        $communities=$member->communities;
+        foreach($communities as $community){
+            if(in_array($community->id, $user->communities->pluck('id')->toArray())){
                 return true;
             }
         }
@@ -65,9 +65,9 @@ class MemberPolicy
         if($user->hasRole('admin')){
             return true;
         }
-        $organizations=$member->organizations;
-        foreach($organizations as $organization){
-            if(in_array($organization->id, $user->organizations->pluck('id')->toArray())){
+        $communities=$member->communities;
+        foreach($communities as $community){
+            if(in_array($community->id, $user->communities->pluck('id')->toArray())){
                 return true;
             }
         }

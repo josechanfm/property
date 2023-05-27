@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\Community;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AdminUser;
-use App\Models\Department;
+use App\Models\Community;
 use Inertia\Inertia;
 
-class DepartmentController extends Controller
+class CommunityController extends Controller
 {
     
     public function __construct()
     {
-        //$this->authorizeResource(Department::class);
+        //$this->authorizeResource(Community::class);
     }
 
     /**
@@ -24,15 +24,15 @@ class DepartmentController extends Controller
     public function index()
     {
         if(auth()->user()->hasRole('admin')){
-            $departments=Department::all();
+            $Communitys=Community::all();
         }else{
-            $departments=AdminUser::find(Auth()->user()->id)->departments;
+            $Communitys=AdminUser::find(Auth()->user()->id)->Communitys;
         }
-        if($departments->count()==1){
-            return redirect()->route('departments.show',$departments[0]->id);
-        }elseif($departments->count()>1){
-            return Inertia::render('Department/Selection',[
-                'departments' => $departments
+        if($Communitys->count()==1){
+            return redirect()->route('Communitys.show',$Communitys[0]->id);
+        }elseif($Communitys->count()>1){
+            return Inertia::render('Community/Selection',[
+                'Communitys' => $Communitys
             ]);
         }else{
             echo '!!';
@@ -67,12 +67,12 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show(Community $Community)
     {
-        return Inertia::render('Department/Dashboard',[
-            'department'=>$department
+        return Inertia::render('Community/Dashboard',[
+            'Community'=>$Community
         ]);
-        return redirect(route('department.certificates.index',[$department->id]));
+        return redirect(route('Community.certificates.index',[$Community->id]));
     }
 
     /**
@@ -81,14 +81,14 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit(Community $Community)
     {         
 
-        //$this->authorize('update' , $department);
+        //$this->authorize('update' , $Community);
 
 
-        return Inertia::render('Department/DepartmentEdit',[
-            'department'=>$department,
+        return Inertia::render('Community/CommunityEdit',[
+            'Community'=>$Community,
         ]);
         
     }

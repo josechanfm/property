@@ -19,7 +19,7 @@ class InquirySeeder extends Seeder
     {
         $faker = Faker::create();
         DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>0,
             'root_id'=>1,
             'title'=>'哪些課程',
@@ -29,7 +29,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         $id=DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>0,
             'root_id'=>2,
             'title'=>'學制',
@@ -39,7 +39,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>2,
             'root_id'=>2,
             'title'=>'學制 follow 1',
@@ -49,7 +49,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         $id=DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>2,
             'root_id'=>2,
             'title'=>'學制 follow 2',
@@ -59,7 +59,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         $id=DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>0,
             'root_id'=>5,
             'title'=>'授課語言',
@@ -69,7 +69,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         $id=DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>5,
             'root_id'=>5,
             'title'=>'授課語言 follow up 1',
@@ -79,7 +79,7 @@ class InquirySeeder extends Seeder
             'admin_user_id'=>1,
         ]);
         DB::table('inquiries')->insertGetId([
-            'department_id'=>1,
+            'community_id'=>1,
             'parent_id'=>0,
             'root_id'=>6,
             'title'=>'課程限制',

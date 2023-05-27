@@ -16,7 +16,7 @@ class FormSeeder extends Seeder
     public function run()
     {
         DB::table('forms')->insert([
-            'organization_id' => '2',
+            'community_id' => '2',
             'name'=>'first form',
             'title'=>'First form of title'
         ]);

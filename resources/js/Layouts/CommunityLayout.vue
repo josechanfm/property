@@ -3,13 +3,13 @@
 
         <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible theme="light" width="250px" class="shadow-md " >
             <div class="m-4 text-center text-lg" v-if="collapsed">
-                <inertia-link href='/department'>Org </inertia-link>
+                <inertia-link href='/community'>Org </inertia-link>
             </div>
             <div class="m-4 text-center text-lg" v-else>
-                <inertia-link :href="route('manage.dashboard')">Department </inertia-link>
+                <inertia-link :href="route('manage.dashboard')">Community </inertia-link>
             </div>
 
-            <DepartmentMenu :menuKeys='menuKeys' :department="department"/>
+            <CommunityMenu :menuKeys='menuKeys' :community="community"/>
         </a-layout-sider>
         
         <a-layout>
@@ -68,8 +68,8 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
-import PageHeader from '@/Components/Department/PageHeader.vue';
-import DepartmentMenu from '@/Components/Department/DepartmentMenu.vue';
+import PageHeader from '@/Components/Community/PageHeader.vue';
+import CommunityMenu from '@/Components/Community/CommunityMenu.vue';
 
 import {
     MenuUnfoldOutlined,
@@ -79,7 +79,7 @@ import {
 
 defineProps({
     title: String,
-    department:Object,
+    community:Object,
 
 });
 

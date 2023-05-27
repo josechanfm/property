@@ -1,5 +1,5 @@
 <template>
-    <a-list item-layout="vertical" size="large" :data-source="departments">
+    <a-list item-layout="vertical" size="large" :data-source="communities">
       <template #footer>
         <div>
           <b>ant design vue</b>
@@ -23,16 +23,16 @@
           </template>
           <a-list-item-meta :description="item.description">
             <template #title>
-                <inertia-link :href="'/manage/department/'+item.id+'/members'">{{ item.title }}</inertia-link>
+                <inertia-link :href="'/manage/community/'+item.id+'/members'">{{ item.title }}</inertia-link>
 
             </template>
             <template #avatar><a-avatar :src="item.avatar" /></template>
           </a-list-item-meta>
           {{ item.content }}
           <br>
-          <inertia-link :href="'/manage/department/'+item.id+'/members'">Members</inertia-link>
+          <inertia-link :href="'/manage/community/'+item.id+'/members'">Members</inertia-link>
           <br>
-          <inertia-link :href="'/manage/departments/'+item.id+'/edit'">Profile</inertia-link>
+          <inertia-link :href="'/manage/communities/'+item.id+'/edit'">Profile</inertia-link>
           <br>
           <inertia-link :href="'/manage/dashboard/'+item.id">Dashboard</inertia-link>
         </a-list-item>
@@ -60,7 +60,7 @@
       LikeOutlined,
       MessageOutlined,
     },
-    props: ['departments'],
+    props: ['communities'],
     setup() {
       const pagination = {
         onChange: page => {

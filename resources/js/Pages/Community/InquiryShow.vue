@@ -1,5 +1,5 @@
 <template>
-    <DepartmentLayout title="Dashboard" :department="department">
+    <CommunityLayout title="Dashboard" :community="community">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 客戶服務管理
@@ -22,24 +22,24 @@
     </a-modal>    
     <!-- Modal End-->
    
-    </DepartmentLayout>
+    </CommunityLayout>
 
 </template>
 
 <script>
-import DepartmentLayout from '@/Layouts/DepartmentLayout.vue';
-import CommentCard from '@/Components/Department/CommentCard.vue';
-import MailerBox from '@/Components/Department/MailerBox.vue';
-import InquiryBox from '@/Components/Department/InquiryBox.vue';
+import CommunityLayout from '@/Layouts/CommunityLayout.vue';
+import CommentCard from '@/Components/Community/CommentCard.vue';
+import MailerBox from '@/Components/Community/MailerBox.vue';
+import InquiryBox from '@/Components/Community/InquiryBox.vue';
 
 export default {
     components: {
-        DepartmentLayout,
+        CommunityLayout,
         CommentCard,
         MailerBox,
         InquiryBox
     },
-    props: ['department','inquiries','inquiry'],
+    props: ['community','inquiries','inquiry'],
     data() {
         return {
             modal:{

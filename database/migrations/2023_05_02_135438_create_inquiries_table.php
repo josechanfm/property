@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('department_id')->nullable();
+            $table->bigInteger('community_id')->nullable();
             $table->bigInteger('parent_id')->default(0);
             $table->bigInteger('root_id')->default(0);
             $table->string('honorific')->nullable();

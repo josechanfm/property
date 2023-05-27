@@ -12,8 +12,8 @@
             <PieChartOutlined />
           </template>
           <span>
-            <inertia-link :href="route('manage.department',department.id)">
-              Department
+            <inertia-link :href="route('manage.community',community.id)">
+              Community
             </inertia-link>
           </span>
         </a-menu-item>
@@ -22,7 +22,7 @@
             <DesktopOutlined />
           </template>
           <span>
-            <inertia-link :href="route('manage.department.inquiries.index',department.id)">
+            <inertia-link :href="route('manage.community.inquiries.index',community.id)">
               Inquiries
             </inertia-link>
           </span>
@@ -83,7 +83,7 @@
       InboxOutlined,
       AppstoreOutlined,
     },
-    props: ['department'],
+    props: ['community'],
     setup() {
       const state = reactive({
         collapsed: false,

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\Community;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Department;
+use App\Models\Community;
 use App\Models\Inquiry;
 
 class InquiryController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Department::class);
+        $this->authorizeResource(Community::class);
     }
 
     /**
@@ -20,15 +20,15 @@ class InquiryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Department $department)
+    public function index(Community $community)
     {
-        $inquiries=$department->inquiries;
-        // $inquiries=Inquiry::whereBelongsTo($department)
+        $inquiries=$community->inquiries;
+        // $inquiries=Inquiry::whereBelongsTo($community)
         //     ->whereLike(['title','content','response'],'語言')
         //     ->get();
-        return Inertia::render('Department/Inquiries',[
-            'department'=>$department,
-            'inquiries'=>$department->inquiries
+        return Inertia::render('Community/Inquiries',[
+            'community'=>$community,
+            'inquiries'=>$community->inquiries
         ]);
     }
 
@@ -48,10 +48,10 @@ class InquiryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Department $department, Request $request)
+    public function store(Community $community, Request $request)
     {
         $inquiry=new Inquiry();
-        $inquiry->department_id=$request->department_id;
+        $inquiry->community_id=$request->community_id;
         $inquiry->parent_id=$request->parent_id;
         $inquiry->root_id=$request->root_id;
         $inquiry->email=$request->email;
@@ -73,14 +73,14 @@ class InquiryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department, Inquiry $inquiry)
+    public function show(Community $community, Inquiry $inquiry)
     {
         // $inquiry=Inquiry::where('id',1)->with('emails')->get();
         // dd($inquiry);
 
         $inquiries=Inquiry::where('id',$inquiry->root_id)->with('children')->with('adminUser')->with('emails')->get();
-        return Inertia::render('Department/InquiryShow',[
-            'department'=>$department,
+        return Inertia::render('Community/InquiryShow',[
+            'community'=>$community,
             'inquiries'=>$inquiries,
             'inquiry'=>$inquiry
         ]);
@@ -104,7 +104,7 @@ class InquiryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Department $department, Inquiry $inquiry, Request $request)
+    public function update(Community $community, Inquiry $inquiry, Request $request)
     {
         $inquiry->response=$request->response;
         $inquiry->response_date=date('Y-m-d H:i:s');

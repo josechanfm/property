@@ -95,9 +95,9 @@ export default {
         console.log(this.inquiry)
         this.$refs.modalRef.validateFields().then(()=>{
             this.$inertia.post(
-                route('manage.department.inquiries.store', 
+                route('manage.community.inquiries.store', 
                     { 
-                        department: this.inquiry.department_id, 
+                        community: this.inquiry.community_id, 
                     }
                 ),
                 this.inquiry, 
@@ -119,9 +119,9 @@ export default {
         this.$refs.modalRef.validateFields().then(()=>{
 
             this.$inertia.patch(
-                route('manage.department.inquiries.update', 
+                route('manage.community.inquiries.update', 
                     { 
-                        department: this.inquiry.department_id, 
+                        community: this.inquiry.community_id, 
                         inquiry: this.inquiry.id 
                     }
                 ), 

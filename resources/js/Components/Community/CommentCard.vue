@@ -82,9 +82,9 @@ export default {
     },
     updateInquiry(inquiry) {
       this.$inertia.patch(
-        route('manage.department.inquiries.update',
+        route('manage.community.inquiries.update',
           {
-            department: inquiry.department_id, inquiry: inquiry.id
+            community: inquiry.community_id, inquiry: inquiry.id
           }
         ),
         inquiry, {

@@ -1,5 +1,5 @@
 <template>
-    <DepartmentLayout title="Dashboard" :department="department">
+    <CommunityLayout title="Dashboard" :community="community">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 客戶服務管理
@@ -10,7 +10,7 @@
             <template #bodyCell="{column, text, record, index}" >
                 <template v-if="column.dataIndex=='operation'">
                     <a-button @click="editRecord(record)">Edit</a-button>
-                    <inertia-link :href="route('manage.department.inquiries.show', {department:record.department_id, inquiry:record.id})">View</inertia-link>
+                    <inertia-link :href="route('manage.community.inquiries.show', {community:record.community_id, inquiry:record.id})">View</inertia-link>
                 </template>
                 <template v-else-if="column.dataIndex=='state'">
                     {{teacherStateLabels[text]}}
@@ -53,19 +53,19 @@
         </template> -->
     </a-modal>    
     <!-- Modal End-->
-    </DepartmentLayout>
+    </CommunityLayout>
 
 </template>
 
 <script>
-import DepartmentLayout from '@/Layouts/DepartmentLayout.vue';
+import CommunityLayout from '@/Layouts/CommunityLayout.vue';
 import { defineComponent, reactive } from 'vue';
 
 export default {
     components: {
-        DepartmentLayout,
+        CommunityLayout,
     },
-    props: ['department','inquiries'],
+    props: ['community','inquiries'],
     data() {
         return {
             modal:{

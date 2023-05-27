@@ -1,5 +1,5 @@
 <template>
-    <DepartmentLayout title="Dashboard" :department="department">
+    <Layout title="Dashboard" :community="community">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 課程規劃
@@ -27,23 +27,23 @@
             <MailerBox :email="modal.data"/>
         </a-modal>    
         <!-- Modal End-->
-    </DepartmentLayout>
+    </CommunityLayout>
 
 </template>
 
 <script>
-import DepartmentLayout from '@/Layouts/DepartmentLayout.vue';
+import CommunityLayout from '@/Layouts/CommunityLayout.vue';
 import { quillEditor } from 'vue3-quill';
-import MailerBox from '@/Components/Department/MailerBox.vue';
+import MailerBox from '@/Components/Community/MailerBox.vue';
 import { defineComponent, reactive } from 'vue';
 
 export default {
     components: {
-        DepartmentLayout,
+        CommunityLayout,
         quillEditor,
         MailerBox,
     },
-    props: ['department','emails'],
+    props: ['community','emails'],
     data() {
         return {
             modal:{
@@ -109,7 +109,7 @@ export default {
         updateRecord(){
             console.log(this.modal.data);
             this.$refs.modalRef.validateFields().then(()=>{
-                this.$inertia.patch('/organization/teachers/' + this.modal.data.id, this.modal.data,{
+                this.$inertia.patch('/community/teachers/' + this.modal.data.id, this.modal.data,{
                     onSuccess:(page)=>{
                         this.modal.data={};
                         this.modal.isOpen=false;
@@ -127,7 +127,7 @@ export default {
         deleteRecord(recordId){
             console.log(recordId);
             if (!confirm('Are you sure want to remove?')) return;
-            this.$inertia.delete('/organization/teachers/' + recordId,{
+            this.$inertia.delete('/community/teachers/' + recordId,{
                 onSuccess: (page)=>{
                     console.log(page);
                 },

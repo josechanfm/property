@@ -63,11 +63,7 @@ class AdminUser extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function departments(){
-        return $this->belongsToMany(Department::class);
-    }
-    public function isDepartmentAdmin($department ){
-        dd($this->departments);
-
+    public function communities(){
+        return $this->belongsToMany(Community::class);
     }
 }

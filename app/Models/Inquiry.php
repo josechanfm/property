@@ -12,8 +12,8 @@ class Inquiry extends Model
     use HasFactory;
     protected $fillable=['email','name','token'];
 
-    public function department(){
-        return $this->belongsTo(Department::class);
+    public function community(){
+        return $this->belongsTo(Community::class);
     }
     public function parent() {
         return $this->belongsToOne(static::class, 'parent_id');

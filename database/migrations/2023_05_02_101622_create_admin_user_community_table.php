@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('member_organization', function (Blueprint $table) {
+        Schema::create('admin_user_community', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('member_id');
-            $table->bigInteger('organization_id');
+            $table->bigInteger('admin_user_id');
+            $table->bigInteger('Community_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_organization');
+        Schema::dropIfExists('admin_user_community');
     }
 };
